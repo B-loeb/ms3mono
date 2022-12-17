@@ -10,6 +10,9 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+app.use(express.json());
+//controllers and routes
+// app.use('/')
 //db
 const mongoString = process.env.DATABASE_URL;
 
@@ -24,7 +27,6 @@ database.once('connected', () => {
     console.log('Database Connected');
 })
 
-app.use(express.json());
 
 app.listen(5000, () => {
     console.log(`Server Started at ${5000}`)
